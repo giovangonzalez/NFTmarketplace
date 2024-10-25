@@ -11,6 +11,7 @@ import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
+import { API_URL } from '../../../constants';
 
 interface Collection {
   _id: string;
@@ -40,7 +41,7 @@ const CollectionsPage = () => {
     if (!token) {
       router.push('/login');
     } else {
-      axios.get('http://localhost:4000/api/collections', {
+      axios.get(API_URL + '/api/collections', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -64,7 +65,7 @@ const CollectionsPage = () => {
     console.log('Sending data:', { name, collectionAddress, imageUrl, jsonUrl });
 
     try {
-      const response = await axios.post('http://localhost:4000/api/collections', {
+      const response = await axios.post(API_URL + '/api/collections', {
         name,
         collectionAddress,
         imageUrl,
@@ -101,7 +102,7 @@ const CollectionsPage = () => {
     }
 
     try {
-      const response = await axios.put(`http://localhost:4000/api/collections/${editCollectionId}`, {
+      const response = await axios.put(`http://18.237.131.131:4000/api/collections/${editCollectionId}`, {
         name,
         collectionAddress,
         imageUrl,
@@ -136,7 +137,7 @@ const CollectionsPage = () => {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await axios.delete(`http://localhost:4000/api/collections/${id}`, {
+      const response = await axios.delete(`http://18.237.131.131:4000/api/collections/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

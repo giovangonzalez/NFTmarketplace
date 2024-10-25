@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { isAuthenticated } from '@/lib/auth';
+import { API_URL } from '../../constants';
 
 const Dashboard = () => {
   const [username, setUsername] = useState('');
@@ -30,7 +31,7 @@ const Dashboard = () => {
         if (!authenticated) {
           router.push('/login');
         } else {
-          axios.get('http://localhost:4000/api/userinfo', {
+          axios.get(API_URL + '/api/userinfo', {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -59,7 +60,7 @@ const Dashboard = () => {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await axios.put('http://localhost:4000/api/userinfo', {
+      const response = await axios.put(API_URL + '/api/userinfo', {
         email: editEmail || email,
         solanaWallet: editSolanaWallet || solanaWallet
       }, {

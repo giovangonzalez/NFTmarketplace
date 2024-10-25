@@ -39,10 +39,10 @@ const CollectionPage = () => {
 
   useEffect(() => {
     if (collectionId) {
-      axios.get(`http://localhost:4000/api/public/collections/${collectionId}`)
+      axios.get(`http://18.237.131.131:4000/api/public/collections/${collectionId}`)
         .then(response => {
           setCollection(response.data);
-          return axios.get(`http://localhost:4000/api/public/collections/${collectionId}/products`);
+          return axios.get(`http://18.237.131.131:4000/api/public/collections/${collectionId}/products`);
         })
         .then(response => {
           setProducts(response.data);

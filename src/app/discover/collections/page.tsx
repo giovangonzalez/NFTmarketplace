@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Skeleton } from "@/components/ui/skeleton";
 import { ExternalLink } from "lucide-react";
+import { API_URL } from '../../../constants';
 
 interface Collection {
   _id: string;
@@ -28,7 +29,7 @@ const DiscoverCollectionsPage = () => {
   useEffect(() => {
     const fetchCollections = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/public/collections');
+        const response = await axios.get(API_URL + '/api/public/collections');
         setCollections(response.data);
         setLoading(false);
       } catch (error) {

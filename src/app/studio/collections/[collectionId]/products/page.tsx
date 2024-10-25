@@ -11,6 +11,7 @@ import Link from 'next/link';
 import ImageDropzone from '@/components/ImageDropzone';
 import JSONForm from '@/components/JSONForm';
 import JSONUpload from '@/components/JSONUpload';
+import { API_URL } from '../../../../../constants';
 
 interface Product {
   _id: string;
@@ -74,7 +75,7 @@ const AddProductPage = () => {
     if (!token) {
       router.push('/login');
     } else {
-      axios.get(`http://localhost:4000/api/collections/${collectionId}/products`, {
+      axios.get(`http://18.237.131.131:4000/api/collections/${collectionId}/products`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -99,7 +100,7 @@ const AddProductPage = () => {
     const colorArray = color.split(',').map(c => c.trim());
 
     try {
-      const response = await axios.post('http://localhost:4000/api/products', {
+      const response = await axios.post(API_URL + '/api/products', {
         name,
         productAddress,
         gender,
@@ -150,7 +151,7 @@ const AddProductPage = () => {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await axios.delete(`http://localhost:4000/api/products/${id}`, {
+      const response = await axios.delete(`http://18.237.131.131:4000/api/products/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -198,7 +199,7 @@ const AddProductPage = () => {
     const colorArray = color.split(',').map(c => c.trim());
 
     try {
-      const response = await axios.put(`http://localhost:4000/api/products/${editProductId}`, {
+      const response = await axios.put(`http://18.237.131.131:4000/api/products/${editProductId}`, {
         name,
         productAddress,
         gender,

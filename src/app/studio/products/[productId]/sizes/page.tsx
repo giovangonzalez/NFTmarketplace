@@ -8,6 +8,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { API_URL } from '../../../../../constants';
 
 interface Size {
   _id: string;
@@ -36,7 +37,7 @@ const ManageSizesPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/products/${productId}`);
+        const response = await axios.get(`http://18.237.131.131:4000/api/products/${productId}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -45,7 +46,7 @@ const ManageSizesPage = () => {
 
     const fetchSizes = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/products/${productId}/sizes`);
+        const response = await axios.get(`http://18.237.131.131:4000/api/products/${productId}/sizes`);
         setSizes(response.data);
       } catch (error) {
         console.error('Error fetching sizes:', error);
@@ -65,7 +66,7 @@ const ManageSizesPage = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/api/sizes', {
+      const response = await axios.post(API_URL + '/api/sizes', {
         productId,
         size: newSize,
         quantity,
@@ -92,7 +93,7 @@ const ManageSizesPage = () => {
     }
 
     try {
-      const response = await axios.put(`http://localhost:4000/api/sizes/${id}`, {
+      const response = await axios.put(`http://18.237.131.131:4000/api/sizes/${id}`, {
         quantity: editQuantity,
       });
 
@@ -111,7 +112,7 @@ const ManageSizesPage = () => {
 
   const handleDeleteSize = async (id: string) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/sizes/${id}`);
+      const response = await axios.delete(`http://18.237.131.131:4000/api/sizes/${id}`);
       if (response.status === 200) {
         setSizes(sizes.filter(size => size._id !== id));
       } else {

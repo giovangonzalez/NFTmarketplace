@@ -6,6 +6,7 @@ import { Keypair } from '@solana/web3.js';
 import TransactionModal from './TransactionModal';
 import CopyLink from './CopyLink';
 import axios from 'axios';
+import { API_URL } from '../../../../constants';
 
 interface MetaDataType {
     name: string;
@@ -27,7 +28,7 @@ export const MintNFT: FC<MetaDataType> = ({ name, symbol, groupAddr, jsonURI }: 
     const saveNFTToDB = async (mintAddress: string) => {
         try {
             const token = localStorage.getItem('token'); // Assuming you store the token in local storage
-            const response = await axios.post('http://localhost:4000/api/saveNFT', {
+            const response = await axios.post(API_URL + '/api/saveNFT', {
                 tokenAddress: mintAddress,
                 walletAddress: publicKey?.toString(),
             }, {

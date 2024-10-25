@@ -33,7 +33,7 @@ const ProductPage: React.FC = () => {
 
   useEffect(() => {
     if (productId) {
-      axios.get(`http://localhost:4000/api/products/${productId}`)
+      axios.get(`http://18.237.131.131:4000/api/products/${productId}`)
         .then(response => {
           setProduct(response.data);
           setMainImage(response.data.imageUrl1);

@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { API_URL } from "../../constants";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +17,7 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/login", {
+      const response = await axios.post(API_URL + '/api/login', {
         username,
         password,
       });

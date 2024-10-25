@@ -30,10 +30,10 @@ const DesignerProfilePage = () => {
 
   useEffect(() => {
     if (designerId) {
-      axios.get(`http://localhost:4000/api/public/designers/${designerId}`)
+      axios.get(`http://18.237.131.131:4000/api/public/designers/${designerId}`)
         .then(response => {
           setDesigner(response.data);
-          return axios.get(`http://localhost:4000/api/collections/by-designer/${designerId}`);
+          return axios.get(`http://18.237.131.131:4000/api/collections/by-designer/${designerId}`);
         })
         .then(response => {
           setDesigner(prevState => prevState ? { ...prevState, collections: response.data } : null);

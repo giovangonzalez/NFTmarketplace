@@ -24,7 +24,7 @@ const FeaturedCollections = () => {
       try {
         const collectionsData = await Promise.all(
           collectionAddresses.map(async (address) => {
-            const response = await axios.get(`http://localhost:4000/api/public/collections/address/${address}`);
+            const response = await axios.get(`http://18.237.131.131:4000/api/public/collections/address/${address}`);
             return response.data;
           })
         );

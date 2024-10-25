@@ -159,5 +159,5 @@ server.all("*", (req, res) => {
 });
 
 server.listen(4000, () => {
-  console.log("> API server ready on http://localhost:4000");
+  console.log("> API server ready on port 4000");
 });

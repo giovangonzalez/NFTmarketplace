@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { API_URL } from '../../constants';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -15,7 +16,7 @@ const Register = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/register', {
+      const response = await axios.post(API_URL + '/api/register', {
         username,
         password,
         email, // Include email

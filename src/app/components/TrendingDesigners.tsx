@@ -15,7 +15,7 @@ const TrendingDesigners = ({ designerUsernames }: { designerUsernames: string[] 
       try {
         const designersData = await Promise.all(
           designerUsernames.map(async (username) => {
-            const response = await axios.get(`http://localhost:4000/api/public/designers/username/${username}`);
+            const response = await axios.get(`http://18.237.131.131:4000/api/public/designers/username/${username}`);
             return response.data;
           })
         );

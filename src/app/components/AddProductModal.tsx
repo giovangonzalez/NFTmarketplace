@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { API_URL } from '../../constants';
 
 interface AddProductModalProps {
   collectionId: string;
@@ -36,7 +37,7 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ collectionId, collect
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/api/products', {
+      const response = await axios.post(API_URL + '/api/products', {
         name,
         productAddress,
         description,

@@ -26,7 +26,7 @@ const NavBar = () => {
     const token = localStorage.getItem("token");
     if (token) {
       axios
-        .get("http://localhost:4000/api/userinfo", {
+        .get("http://18.237.131.131:4000/api/userinfo", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

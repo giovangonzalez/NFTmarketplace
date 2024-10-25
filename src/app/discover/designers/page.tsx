@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
+import { API_URL } from '../../../constants';
 
 interface Designer {
   _id: string;
@@ -30,12 +31,12 @@ const DesignersPage = () => {
   useEffect(() => {
     const fetchDesigners = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/designers');
+        const response = await axios.get(API_URL + '/api/designers');
         const designersData = response.data;
         setDesigners(designersData);
         // Fetch collections for each designer
         designersData.forEach(async (designer: Designer) => {
-          const collectionsResponse = await axios.get(`http://localhost:4000/api/collections/by-designer/${designer._id}`);
+          const collectionsResponse = await axios.get(`http://18.237.131.131:4000/api/collections/by-designer/${designer._id}`);
           setCollections(prevState => ({
             ...prevState,
             [designer._id]: collectionsResponse.data,

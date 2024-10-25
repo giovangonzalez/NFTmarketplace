@@ -49,7 +49,7 @@ const ProductProfilePage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/products/${productId}`);
+        const response = await axios.get(`http://18.237.131.131:4000/api/products/${productId}`);
         setProduct(response.data);
         setName(response.data.name);
         setProductAddress(response.data.productAddress);
@@ -80,7 +80,7 @@ const ProductProfilePage = () => {
     }
 
     try {
-      const response = await axios.put(`http://localhost:4000/api/products/${productId}`, {
+      const response = await axios.put(`http://18.237.131.131:4000/api/products/${productId}`, {
         name,
         productAddress,
         category,

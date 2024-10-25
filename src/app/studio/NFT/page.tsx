@@ -21,7 +21,7 @@ const NFTPage: React.FC = () => {
   useEffect(() => {
     const fetchNFTs = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/nfts`, {
+        const response = await axios.get(`http://18.237.131.131:4000/api/nfts`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
